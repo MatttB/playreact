@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choose an appstore.</title>
+
+  <meta name="theme-color" content="#3372DF">
+
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/">
+  -->
+
+  <!-- Page styles -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<header class="app-bar promote-layer" style="background-image: url('images/choose/web-header.png')">
+  <div class="app-bar-container" style="background-image: url('images/choose/web-header.png'); background-position: center">
+    <button class="menu"><img src="images/choose/logo.png" alt="Menu"></button>
+    <h1 class="logo" style="color: red">REACT. <strong>Choose:</strong></h1>
+    <section class="app-bar-actions">
+    </section>
+  </div>
+</header>
+<!--
+<nav class="navdrawer-container promote-layer">
+  <h4>Navigation</h4>
+  <ul>
+   <li><a href="/">Hello</a></li>
+    <li><a href="choose.html">Play</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+-->
+<main>
+  <div class="logo-container">
+    <a href="https://play.google.com/store/apps/"><img src=""></a>
+    <a href="https://itunes.apple.com/genre/ios/"><img src=""></a>
+  </div>
+  <p></p>
+</main>
+
+<script>
+  var ANDROID_URL = "https://play.google.com/store/apps"
+    , IOS_URL = "https://itunes.apple.com/genre/ios/";
+  var isMobile = {
+    Android: function() {
+      return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+      return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+      return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+      return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+  };
+  if(isMobile.Android()){
+    window.location = ANDROID_URL;
+  }
+  else if(isMobile.iOS()){
+    window.location = IOS_URL;
+  }
+  else{
+    var imgs = document.getElementsByTagName('img');
+    imgs[1].setAttribute("src", "images/choose/android.svg");
+    imgs[2].setAttribute("src", "images/choose/ios.svg");
+    var text = document.getElementsByTagName("p")[0];
+    if(isMobile.BlackBerry() || isMobile.Opera() || isMobile.Windows()){
+      text.innerText = 'Supported devices: iOS and Android.';
+    }
+  }
+</script>
+<!-- build:js(app/) ../../scripts/main.min.js -->
+<script src="scripts/main.js"></script>
+
+</body>
+</html>
